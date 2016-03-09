@@ -5,16 +5,24 @@ window.addEventListener('load', function() {
 	var posodobiOpomnike = function() {
 		var opomniki = document.querySelectorAll(".opomnik");
 		
-		for (i = 0; i < opomniki.length; i++) {
+		for (var i = 0; i < opomniki.length; i++) {
 			var opomnik = opomniki[i];
 			var casovnik = opomnik.querySelector("span");
 			var cas = parseInt(casovnik.innerHTML);
-	
+			if(cas > 0){
+				casovnik.innerHTML=cas -1;
+			}
+			else {
+				var naziv = opomnik.querySelector(".naziv_opomnika").innerHTML;
+				alert(naziv);
+				document.querySelector("#opomniki").removeChild(opomnik);
+			}
 			//TODO: 
 			// - če je čas enak 0, izpiši opozorilo "Opomnik!\n\nZadolžitev NAZIV_OPOMNIK je potekla!"
 			// - sicer zmanjšaj čas za 1 in nastavi novo vrednost v časovniku
 		}
 	}
+	
 	
 	var izvediPrijavo=function(event){
 		var uporabnik = document.querySelector("#uporabnisko_ime").value;
